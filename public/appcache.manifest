@@ -1,0 +1,14 @@
+CACHE MANIFEST
+#Version 31
+
+CACHE:
+# Defines resources to be cached
+cobi.js
+grid.js
+client.js
+utils.js
+style.css
+uikit7396-icons.js
+
+NETWORK:
+*

@@ -1,0 +1,50 @@
+@import url(https://cdn.cobi.bike/static/fonts/UniSansRegular.css);
+@import url(https://cdn.cobi.bike/static/fonts/UniSansRegularItalic.css);
+
+body, html{
+  overflow-x: hidden;
+  background-color: #1d1d23;
+  font: 100 1.9rem/20px 'UniSansRegularItalic', Avenir, Heveltica, Arial, san-serif; color: #FFF;
+  text-align: center !important;
+}
+
+ul {
+  margin-left:3px !important;
+  margin-right:-2px !important;
+}
+
+.uk-card-default {
+    background: #2d2d37;
+    color: #FFF;
+    box-shadow: 0;
+    padding: .7rem .5rem;
+}
+
+.uk-grid-small li {
+  margin: 0 !important;
+  padding: 3px !important;
+}
+
+
+.label {
+  font: 100 .45rem/15px 'UniSansRegularItalic', Avenir, Heveltica, Arial, san-serif; color: #666;
+  letter-spacing: .05rem;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.value {
+  text-transform: uppercase;
+}
+
+.unit {
+  font: 100 .55rem/22px 'UniSansRegular', Avenir, Heveltica, Arial, san-serif; color: #00c8e6;
+  margin-top: .8rem;
+  margin-bottom: 0;
+  letter-spacing: .05rem;  
+}
+
+.inactive {
+  opacity: .3;
+}
+

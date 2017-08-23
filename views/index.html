@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html manifest="appcache.manifest">
+<head>
+  <meta charset="UTF-8" name="viewport" content="maximum-scale=1,initial-scale=1,user-scalable=no" />
+  <title>COBI Grid</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.28/css/uikit.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+  <body>
+    <ul id="main-grid" class="uk-grid-small uk-child-width-1-3 uk-text-center" uk-sortable="handle: .uk-card" uk-grid>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body">
+            <div class="label">speed</div>
+            <div id="speed" class="value">—</div>
+            <div class="unit">km/h</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body">
+            <div class="label">cadence</div>
+            <div id="cadence" class="value">—</div>
+            <div class="unit">rpm</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body">
+            <div class="label">power</div>
+            <div id="power" class="value">—</div>
+            <div class="unit">watts</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body">
+            <div class="label">heartrate</div>
+            <div id="heartrate" class="value">—</div>
+            <div class="unit">bpm</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body">
+            <div class="label">distance</div>
+            <div id="distance" class="value">—</div>
+            <div class="unit">km</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body">
+            <div class="label">speed avg</div>
+            <div id="speedAvg" class="value">—</div>
+            <div class="unit">km/h</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body inactive">
+            <div class="label">lorem</div>
+            <div id="lorem" class="value">—</div>
+            <div class="unit">tbd</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body inactive">
+            <div class="label">ipsum</div>
+            <div id="ipsum" class="value">—</div>
+            <div class="unit">tbd</div>
+          </div>
+      </li>
+      
+      
+      <li>
+          <div class="uk-card uk-card-default uk-card-body inactive">
+            <div class="label">tbd</div>
+            <div id="tbd1" class="value">—</div>
+            <div class="unit">bpm</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body inactive">
+            <div class="label">tbd</div>
+            <div id="tbd2" class="value">—</div>
+            <div class="unit">tbd</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body inactive">
+            <div class="label">tbd</div>
+            <div id="tbd3" class="value">—</div>
+            <div class="unit">tbd</div>
+          </div>
+      </li>
+      <li>
+          <div class="uk-card uk-card-default uk-card-body inactive">
+            <div class="label">tbd</div>
+            <div id="tbd4" class="value">—</div>
+            <div class="unit">km</div>
+          </div>
+      </li>  
+  </ul>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.28/js/uikit.min.js"></script>
+  <script src="uikit7396-icons.js"></script>
+  <script src="cobi.js"></script>
+  <script src="utils.js"></script>
+  <script src="client.js"></script>
+  <script src="grid.js"></script>
+  </body>
+</html>
