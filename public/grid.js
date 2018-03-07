@@ -25,13 +25,36 @@ var remToZoomMapping = [0, 2.7, 2.7, 1.9, 1.4];
 var touchInteractionEnabled = false;
 var isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-// Set Defaults
-if (!localStorage.getItem(localStorageKeyGridOrderedList)) localStorage.setItem(localStorageKeyGridOrderedList, JSON.stringify(defaultOrderedList));
-if (!localStorage.getItem(localStorageKeyGridZoom)) localStorage.setItem(localStorageKeyGridZoom, JSON.stringify(defaultZoomIndex));
+function getOrderedList() {
+  value = JSON.parse(localStorage.getItem(localStorageKeyGridOrderedList));
+  if (value === null) {
+    return defaultOrderedList;
+  } else {
+    return value;
+  }
+}
+
+function setOrderedList(value) {
+  localStorage.setItem(localStorageKeyGridOrderedList, JSON.stringify(value));
+}
+
+function getZoomIndex() {
+  value = JSON.parse(localStorage.getItem(localStorageKeyGridZoom));
+  if (value === null) {
+    return defaultZoomIndex;
+  } else {
+    return value;
+  }
+}
+
+function setZoomIndex(value) {
+  localStorage.setItem(localStorageKeyGridZoom, JSON.stringify(value));
+}
+
 
 // Load from Persistence
-var zoomIndex = JSON.parse(localStorage.getItem(localStorageKeyGridZoom));
-var orderedList = JSON.parse(localStorage.getItem(localStorageKeyGridOrderedList));
+var zoomIndex = getZoomIndex();
+var orderedList = getOrderedList();
 
 // Zoom Control
 if (COBI.parameters.state() == COBI.state.edit && isPortrait) {
@@ -40,11 +63,11 @@ if (COBI.parameters.state() == COBI.state.edit && isPortrait) {
   COBI.hub.externalInterfaceAction.subscribe(function(action) {
     if ((action == 'UP' || action == 'RIGHT') && zoomIndex > minZoomIndex) {
       zoomIndex--;  
-      localStorage.setItem(localStorageKeyGridZoom, JSON.stringify(zoomIndex));
+      setZoomIndex(zoomIndex);
     }
     if ((action == 'DOWN' || action == 'LEFT') && zoomIndex < maxZoomIndex) {
       zoomIndex++;
-      localStorage.setItem(localStorageKeyGridZoom, JSON.stringify(zoomIndex));
+      setZoomIndex(zoomIndex);
     } 
     updateGridZoom();
   });  
@@ -54,7 +77,7 @@ if (COBI.parameters.state() == COBI.state.edit && isPortrait) {
 if (orderedList.length != defaultOrderedList.length) {
   // Erase persistence - override with default list
   orderedList = defaultOrderedList;
-  localStorage.setItem(localStorageKeyGridOrderedList, JSON.stringify(orderedList));
+  setOrderedList(orderedList);
   console.warn('COBI', 'Grid configuration reset');
 }
 
@@ -65,7 +88,7 @@ $('body').on('stop', function(e, sortable) {
     reorderedList.push(sortable.$el[0].childNodes[i].id);
   }
   orderedList = reorderedList;
-  localStorage.setItem(localStorageKeyGridOrderedList, JSON.stringify(orderedList));
+  setOrderedList(orderedList)
 });
 
 // Show / Hide Title
