@@ -1,8 +1,8 @@
 // Constants
-const localStorageKeyGridOrderedList = 'grid-ordered-list';
-const localStorageKeyGridZoom = 'grid-zoom';
+var localStorageKeyGridOrderedList = 'grid-ordered-list';
+var localStorageKeyGridZoom = 'grid-zoom';
 
-const defaultOrderedList = [
+var defaultOrderedList = [
   'speed',
   'average_speed',
   'cadence',
@@ -14,13 +14,13 @@ const defaultOrderedList = [
   'duration'
 ];
 
-const defaultZoomIndex = 3;
-const editZoomIndexOverride = 2;
+var defaultZoomIndex = 3;
+var editZoomIndexOverride = 2;
 
-const minZoomIndex = 1;
-const maxZoomIndex = 4;
+var minZoomIndex = 1;
+var maxZoomIndex = 4;
 
-const remToZoomMapping = [0, 2.7, 2.7, 1.9, 1.4];
+var remToZoomMapping = [0, 2.7, 2.7, 1.9, 1.4];
 
 var touchInteractionEnabled = false;
 var isPortrait = window.matchMedia("(orientation: portrait)").matches;
