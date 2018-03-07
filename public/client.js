@@ -1,4 +1,5 @@
 COBI.init('token');
+
 COBI.app.clockVisible.write(false);
 COBI.devkit.overrideThumbControllerMapping.write(true);
 
