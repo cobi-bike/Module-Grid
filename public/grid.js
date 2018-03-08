@@ -28,7 +28,7 @@ var isPortrait = window.matchMedia("(orientation: portrait)").matches;
 // Define getter and setters for saving and retrieving local storage variables or default variables
 
 function getOrderedList() {
-  value = JSON.parse(localStorage.getItem(localStorageKeyGridOrderedList));
+  var value = JSON.parse(localStorage.getItem(localStorageKeyGridOrderedList));
   if (value === null) {
     return defaultOrderedList;
   } else {
@@ -41,7 +41,7 @@ function setOrderedList(value) {
 }
 
 function getZoomIndex() {
-  value = JSON.parse(localStorage.getItem(localStorageKeyGridZoom));
+  var value = JSON.parse(localStorage.getItem(localStorageKeyGridZoom));
   if (value === null) {
     return defaultZoomIndex;
   } else {
