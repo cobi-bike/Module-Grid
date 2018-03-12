@@ -23,7 +23,7 @@ var maxZoomIndex = 4;
 var remToZoomMapping = [0, 2.7, 2.7, 1.9, 1.4];
 
 var touchInteractionEnabled = false;
-var isPortrait = window.matchMedia("(orientation: portrait)").matches;
+var isPortrait = window.matchMedia('(orientation: portrait)').matches;
 
 // Define getter and setters for saving and retrieving local storage variables or default variables
 
@@ -53,7 +53,6 @@ function setZoomIndex(value) {
   localStorage.setItem(localStorageKeyGridZoom, JSON.stringify(value));
 }
 
-
 // Load from local storage
 var zoomIndex = getZoomIndex();
 var orderedList = getOrderedList();
@@ -74,18 +73,17 @@ if (COBI.parameters.state() == COBI.state.edit && isPortrait) {
   COBI.hub.externalInterfaceAction.subscribe(function(action) {
     // Listen to inputs and update zoom index variable
     if ((action == 'UP' || action == 'RIGHT') && zoomIndex > minZoomIndex) {
-      zoomIndex--;  
+      zoomIndex--;
       setZoomIndex(zoomIndex);
     }
     if ((action == 'DOWN' || action == 'LEFT') && zoomIndex < maxZoomIndex) {
       zoomIndex++;
       setZoomIndex(zoomIndex);
-    } 
+    }
     // Resize gui elements based on zoom
     updateGridZoom();
-  });  
+  });
 }
-
 
 // Store new order of list when user has stopped dragging an item
 $('body').on('stop', function(e, sortable) {
@@ -95,7 +93,7 @@ $('body').on('stop', function(e, sortable) {
     reorderedList.push(sortable.$el[0].childNodes[i].id);
   }
   orderedList = reorderedList;
-  setOrderedList(orderedList)
+  setOrderedList(orderedList);
 });
 
 // Display detailled item names if touch interaction is allowed
@@ -104,7 +102,7 @@ COBI.app.touchInteractionEnabled.subscribe(function(value) {
   var elements = document.getElementsByClassName('label');
   for (var i in elements) {
     if (elements[i].style) {
-      elements[i].style.visibility = touchInteractionEnabled ? 'visible' : 'hidden';  
+      elements[i].style.visibility = touchInteractionEnabled ? 'visible' : 'hidden';
     }
   }
 });
@@ -131,55 +129,63 @@ function subscribeGridItemWith(definition) {
 
 // Update dom element with values for item
 function updateGridItemWith(definition, value) {
-  $('#'+definition.id+'_value').html(`${value}`);
-  $('#'+definition.id+'_unit').html(`${definition.unit}`);
-  $('#'+definition.id+'_name').html(`${definition.name}`);  
+  $('#' + definition.id + '_value').html(`${value}`);
+  $('#' + definition.id + '_unit').html(`${definition.unit}`);
+  $('#' + definition.id + '_name').html(`${definition.name}`);
 }
 
 // Update size of grid elements based on zoom
 function updateGridZoom() {
   for (var i = minZoomIndex; i <= maxZoomIndex; i++) {
-    document.getElementById("main-grid").classList.remove('uk-child-width-1-'+i);  
+    document.getElementById('main-grid').classList.remove('uk-child-width-1-' + i);
   }
-  document.getElementById("main-grid").classList.add('uk-child-width-1-'+zoomIndex);
-  document.body.style['font-size'] = remToZoomMapping[zoomIndex]+'rem';
+  document.getElementById('main-grid').classList.add('uk-child-width-1-' + zoomIndex);
+  document.body.style['font-size'] = remToZoomMapping[zoomIndex] + 'rem';
 }
 
 // Create dom element for item
 function createGridItem(definition) {
   var container = document.createElement('li');
   container.setAttribute('id', definition.id);
-  
+
   var item = document.createElement('div');
   item.setAttribute('class', 'uk-card uk-card-default uk-card-body');
-  item.onselectstart = function() { return false };
-  
+  item.onselectstart = function() {
+    return false;
+  };
+
   var nameLabel = document.createElement('div');
   nameLabel.setAttribute('class', 'label');
   nameLabel.setAttribute('id', definition.id + '_name');
   nameLabel.innerHTML = definition.name;
-  nameLabel.style.visibility = touchInteractionEnabled ? 'visible' : 'hidden'; 
-  nameLabel.onselectstart = function() { return false };
-  
+  nameLabel.style.visibility = touchInteractionEnabled ? 'visible' : 'hidden';
+  nameLabel.onselectstart = function() {
+    return false;
+  };
+
   var valueLabel = document.createElement('div');
   valueLabel.setAttribute('class', 'value');
   valueLabel.setAttribute('id', definition.id + '_value');
   valueLabel.innerHTML = definition.value;
-  valueLabel.onselectstart = function() { return false };
-  
+  valueLabel.onselectstart = function() {
+    return false;
+  };
+
   var unitLabel = document.createElement('div');
-  unitLabel.setAttribute('class', 'unit'); 
+  unitLabel.setAttribute('class', 'unit');
   unitLabel.setAttribute('id', definition.id + '_unit');
   unitLabel.innerHTML = definition.unit;
-  unitLabel.onselectstart = function() { return false };
-  
+  unitLabel.onselectstart = function() {
+    return false;
+  };
+
   container.appendChild(item);
 
   item.appendChild(nameLabel);
   item.appendChild(valueLabel);
   item.appendChild(unitLabel);
 
-  document.getElementById('main-grid').appendChild(container);  
+  document.getElementById('main-grid').appendChild(container);
 }
 
 // Deletes all items in dom
@@ -200,95 +206,96 @@ function definitionForId(id) {
 
 // Define id, name, events, formatting functions, units and default value for each item
 var definitions = [
-{
-  id: "speed",
-  name: "Speed",
-  subscribe: COBI.rideService.speed.subscribe,
-  unsubscribe: COBI.rideService.speed.unsubscribe,
-  formatter: formatSpeedDot1,
-  unit: 'km/h',
-  defaultValue: '-'
-},
-{
-  id: "average_speed",
-  name: "Avg Speed",
-  subscribe: COBI.tourService.averageSpeed.subscribe,
-  unsubscribe: COBI.tourService.averageSpeed.unsubscribe,
-  formatter: formatSpeedDot1,
-  unit: 'Ø km/h',
-  defaultValue: '-'
-},
-{
-  id: "user_power",
-  name: "User Power",
-  subscribe: COBI.rideService.userPower.subscribe,
-  unsubscribe: COBI.rideService.userPower.unsubscribe,
-  formatter: formatInt,
-  unit: 'watts',
-  defaultValue: '-'
-},
-{
-  id: "cadence",
-  name: "Cadence",
-  subscribe: COBI.rideService.cadence.subscribe,
-  unsubscribe: COBI.rideService.cadence.unsubscribe,
-  formatter: formatInt,
-  unit: 'rpm',
-  defaultValue: '-'
-},
-{
-  id: "distance",
-  name: "Distance",
-  subscribe: COBI.tourService.ridingDistance.subscribe,
-  unsubscribe: COBI.tourService.ridingDistance.unsubscribe,
-  formatter: formatDistanceDot1,
-  unit: 'km total',
-  defaultValue: '-'
-},
-{
-  id: "calories",
-  name: "Calories",
-  subscribe: COBI.tourService.calories.subscribe,
-  unsubscribe: COBI.tourService.calories.unsubscribe,
-  formatter: formatInt,
-  unit: 'kcal',
-  defaultValue: '-'
-},
-{
-  id: "ascent",
-  name: "Ascent",
-  subscribe: COBI.tourService.ascent.subscribe,
-  unsubscribe: COBI.tourService.ascent.unsubscribe,
-  formatter: formatInt,
-  unit: 'm',
-  defaultValue: '-'
-},
-{
-  id: "heart_rate",
-  name: "Heart Rate",
-  subscribe: COBI.rideService.heartRate.subscribe,
-  unsubscribe: COBI.rideService.heartRate.unsubscribe,
-  formatter: formatInt,
-  unit: 'bpm',
-  defaultValue: '-'
-},
-{
-  id: "duration",
-  name: "Duration",
-  subscribe: COBI.tourService.ridingDuration.subscribe,
-  unsubscribe: COBI.tourService.ridingDuration.unsubscribe,
-  formatter: formatMins,
-  unit: 'min',
-  defaultValue: '-'
-}];
+  {
+    id: 'speed',
+    name: 'Speed',
+    subscribe: COBI.rideService.speed.subscribe,
+    unsubscribe: COBI.rideService.speed.unsubscribe,
+    formatter: formatSpeedDot1,
+    unit: 'km/h',
+    defaultValue: '-'
+  },
+  {
+    id: 'average_speed',
+    name: 'Avg Speed',
+    subscribe: COBI.tourService.averageSpeed.subscribe,
+    unsubscribe: COBI.tourService.averageSpeed.unsubscribe,
+    formatter: formatSpeedDot1,
+    unit: 'Ø km/h',
+    defaultValue: '-'
+  },
+  {
+    id: 'user_power',
+    name: 'User Power',
+    subscribe: COBI.rideService.userPower.subscribe,
+    unsubscribe: COBI.rideService.userPower.unsubscribe,
+    formatter: formatInt,
+    unit: 'watts',
+    defaultValue: '-'
+  },
+  {
+    id: 'cadence',
+    name: 'Cadence',
+    subscribe: COBI.rideService.cadence.subscribe,
+    unsubscribe: COBI.rideService.cadence.unsubscribe,
+    formatter: formatInt,
+    unit: 'rpm',
+    defaultValue: '-'
+  },
+  {
+    id: 'distance',
+    name: 'Distance',
+    subscribe: COBI.tourService.ridingDistance.subscribe,
+    unsubscribe: COBI.tourService.ridingDistance.unsubscribe,
+    formatter: formatDistanceDot1,
+    unit: 'km total',
+    defaultValue: '-'
+  },
+  {
+    id: 'calories',
+    name: 'Calories',
+    subscribe: COBI.tourService.calories.subscribe,
+    unsubscribe: COBI.tourService.calories.unsubscribe,
+    formatter: formatInt,
+    unit: 'kcal',
+    defaultValue: '-'
+  },
+  {
+    id: 'ascent',
+    name: 'Ascent',
+    subscribe: COBI.tourService.ascent.subscribe,
+    unsubscribe: COBI.tourService.ascent.unsubscribe,
+    formatter: formatInt,
+    unit: 'm',
+    defaultValue: '-'
+  },
+  {
+    id: 'heart_rate',
+    name: 'Heart Rate',
+    subscribe: COBI.rideService.heartRate.subscribe,
+    unsubscribe: COBI.rideService.heartRate.unsubscribe,
+    formatter: formatInt,
+    unit: 'bpm',
+    defaultValue: '-'
+  },
+  {
+    id: 'duration',
+    name: 'Duration',
+    subscribe: COBI.tourService.ridingDuration.subscribe,
+    unsubscribe: COBI.tourService.ridingDuration.unsubscribe,
+    formatter: formatMins,
+    unit: 'min',
+    defaultValue: '-'
+  }
+];
 
 // Init Grid on Load
-$(window).on('blur focus', function() { 
+$(window).on('blur focus', function() {
   restoreGrid();
-  updateGridZoom(); 
+  updateGridZoom();
 });
 
-$(window).on("load", function (e) {
+$(window).on('load', function(e) {
   restoreGrid();
-  updateGridZoom(); 
+  updateGridZoom();
 });

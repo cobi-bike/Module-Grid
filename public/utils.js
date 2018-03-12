@@ -9,11 +9,11 @@ function formatInt(value) {
 }
 
 function formatDot1(value) {
-  return parseInt(value * 10)/10;
+  return parseInt(value * 10) / 10;
 }
 
 function formatSpeedInt(value) {
-  return parseInt(value*3.6);
+  return parseInt(value * 3.6);
 }
 
 function formatSpeedDot1(value) {
@@ -27,19 +27,19 @@ function formatDistanceDot1(value) {
 }
 
 function formatStopwatch(value) {
-  var min = (parseInt(value / 60)).toString();
-  var sec = (parseInt(value % 60)).toString();
-  if (min.length == 1) min = "0" + min;
-  if (sec.length == 1) sec = "0" + sec;
-  return min + ":" + sec;
+  var min = parseInt(value / 60).toString();
+  var sec = parseInt(value % 60).toString();
+  if (min.length == 1) min = '0' + min;
+  if (sec.length == 1) sec = '0' + sec;
+  return min + ':' + sec;
 }
 
 function formatMins(value) {
-  var min = (parseInt(value / 60)).toString();
-  if (min.length == 1) min = "0" + min;
+  var min = parseInt(value / 60).toString();
+  if (min.length == 1) min = '0' + min;
   return min;
 }
 
 function enforceDot1(stringValue) {
-  return (stringValue.indexOf('.') == -1) ? stringValue + ".0" : stringValue;
+  return stringValue.indexOf('.') == -1 ? stringValue + '.0' : stringValue;
 }
