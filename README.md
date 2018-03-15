@@ -3,7 +3,7 @@
 The Grid DevKit Module displays cycling and trip statistics and allows to customize their appearance.
 Its part of a collection of Open Source [modules](https://cobi.bike/devkit) for the [COBI.bike](https://cobi.bike) system.
 
-![COBI.bike Grid App](https://cobi.bike/sites/default/files/cobi-assets/cobi-devkit-demo-grid-small.jpg)
+<img src="screenshot.png" width="500px" alt="COBI.bike Grid module">
 
 ## Quickstart: Interactive Demo
 
