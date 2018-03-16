@@ -57,6 +57,31 @@ function setZoomIndex(value) {
 var zoomIndex = getZoomIndex();
 var orderedList = getOrderedList();
 
+if (inEditMode && isPortrait) {
+  // Override zoom when editing grid in portrait mode
+  zoomIndex = editZoomIndexOverride;
+}
+
+function zoomIn() {
+  if (zoomIndex > minZoomIndex) {
+    zoomIndex--;
+    // Store in local storage
+    setZoomIndex(zoomIndex);
+    // Resize gui elements based on zoom
+    updateGridZoom();
+  }
+}
+
+function zoomOut() {
+  if (zoomIndex < maxZoomIndex) {
+    zoomIndex++;
+    // Store in local storage
+    setZoomIndex(zoomIndex);
+    // Resize gui elements based on zoom
+    updateGridZoom();
+  }
+}
+
 // Check if list stored in local storage has the same length as default list
 if (orderedList.length != defaultOrderedList.length) {
   // We assume that a update added new items. Therefore we overwrite the old list stored in local storage
@@ -65,24 +90,9 @@ if (orderedList.length != defaultOrderedList.length) {
   console.warn('COBI', 'Grid configuration reset');
 }
 
-// Allow user to zoom in and out
-if (COBI.parameters.state() == COBI.state.edit && isPortrait) {
-  // Overwrite zoom if in portrait- and edit-mode
-  zoomIndex = editZoomIndexOverride;
-} else {
-  COBI.hub.externalInterfaceAction.subscribe(function(action) {
-    // Listen to inputs and update zoom index variable
-    if ((action == 'UP' || action == 'RIGHT') && zoomIndex > minZoomIndex) {
-      zoomIndex--;
-      setZoomIndex(zoomIndex);
-    }
-    if ((action == 'DOWN' || action == 'LEFT') && zoomIndex < maxZoomIndex) {
-      zoomIndex++;
-      setZoomIndex(zoomIndex);
-    }
-    // Resize gui elements based on zoom
-    updateGridZoom();
-  });
+
+if (!inEditMode) {
+  document.getElementById('main-grid').classList.add('uk-sortable-nodrag');
 }
 
 // Store new order of list when user has stopped dragging an item
@@ -97,15 +107,14 @@ $('body').on('stop', function(e, sortable) {
 });
 
 // Display detailled item names if touch interaction is allowed
-COBI.app.touchInteractionEnabled.subscribe(function(value) {
-  touchInteractionEnabled = value;
+function updateInterfaceVisibility(touchInteractionEnabled) {
   var elements = document.getElementsByClassName('label');
   for (var i in elements) {
     if (elements[i].style) {
       elements[i].style.visibility = touchInteractionEnabled ? 'visible' : 'hidden';
     }
   }
-});
+}
 
 // Add dom element for each item
 function restoreGrid() {
@@ -204,90 +213,6 @@ function definitionForId(id) {
   return null;
 }
 
-// Define id, name, events, formatting functions, units and default value for each item
-var definitions = [
-  {
-    id: 'speed',
-    name: 'Speed',
-    subscribe: COBI.rideService.speed.subscribe,
-    unsubscribe: COBI.rideService.speed.unsubscribe,
-    formatter: formatSpeedDot1,
-    unit: 'km/h',
-    defaultValue: '-'
-  },
-  {
-    id: 'average_speed',
-    name: 'Avg Speed',
-    subscribe: COBI.tourService.averageSpeed.subscribe,
-    unsubscribe: COBI.tourService.averageSpeed.unsubscribe,
-    formatter: formatSpeedDot1,
-    unit: 'Ø km/h',
-    defaultValue: '-'
-  },
-  {
-    id: 'user_power',
-    name: 'User Power',
-    subscribe: COBI.rideService.userPower.subscribe,
-    unsubscribe: COBI.rideService.userPower.unsubscribe,
-    formatter: formatInt,
-    unit: 'watts',
-    defaultValue: '-'
-  },
-  {
-    id: 'cadence',
-    name: 'Cadence',
-    subscribe: COBI.rideService.cadence.subscribe,
-    unsubscribe: COBI.rideService.cadence.unsubscribe,
-    formatter: formatInt,
-    unit: 'rpm',
-    defaultValue: '-'
-  },
-  {
-    id: 'distance',
-    name: 'Distance',
-    subscribe: COBI.tourService.ridingDistance.subscribe,
-    unsubscribe: COBI.tourService.ridingDistance.unsubscribe,
-    formatter: formatDistanceDot1,
-    unit: 'km total',
-    defaultValue: '-'
-  },
-  {
-    id: 'calories',
-    name: 'Calories',
-    subscribe: COBI.tourService.calories.subscribe,
-    unsubscribe: COBI.tourService.calories.unsubscribe,
-    formatter: formatInt,
-    unit: 'kcal',
-    defaultValue: '-'
-  },
-  {
-    id: 'ascent',
-    name: 'Ascent',
-    subscribe: COBI.tourService.ascent.subscribe,
-    unsubscribe: COBI.tourService.ascent.unsubscribe,
-    formatter: formatInt,
-    unit: 'm',
-    defaultValue: '-'
-  },
-  {
-    id: 'heart_rate',
-    name: 'Heart Rate',
-    subscribe: COBI.rideService.heartRate.subscribe,
-    unsubscribe: COBI.rideService.heartRate.unsubscribe,
-    formatter: formatInt,
-    unit: 'bpm',
-    defaultValue: '-'
-  },
-  {
-    id: 'duration',
-    name: 'Duration',
-    subscribe: COBI.tourService.ridingDuration.subscribe,
-    unsubscribe: COBI.tourService.ridingDuration.unsubscribe,
-    formatter: formatMins,
-    unit: 'min',
-    defaultValue: '-'
-  }
-];
 
 // Init Grid on Load
 $(window).on('blur focus', function() {
