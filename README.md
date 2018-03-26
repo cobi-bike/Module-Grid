@@ -30,11 +30,11 @@ Follow the [instructions](https://github.com/cobi-bike/DevKit#-test-your-module)
 
 ### Step 3: Run Node.js server
 
-The module is accessible under [localhost:8888](http://localhost:8888/) after starting the Node.js server with:
+The module is accessible under [localhost:3000](http://localhost:3000/) after starting the Node.js server with:
 ``` bash
-PORT=8888 node server.js
+node server.js
 ```  
-The settings menu can be accessed with the [?state=edit](http://localhost:8888/?state=edit) suffix.
+The settings menu can be accessed with the [?state=edit](http://localhost:3000/?state=edit) suffix.
 
 
 ## Useful DevKit links
