@@ -23,7 +23,7 @@ Clone this repository and install Node.js dependencies with:
 npm install
 ```  
 
-### Step 2: Install COBI.bike DevKit
+### Step 2: Install COBI.bike DevKit Simulator
 
 Follow the [instructions](https://github.com/cobi-bike/DevKit#-test-your-module) to install the COBI.bike Google Chrome Simulator and get familiar with the basics of module development on the COBI plattform.
 
