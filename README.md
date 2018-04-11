@@ -7,9 +7,15 @@ Its part of a collection of Open Source [modules](https://cobi.bike/devkit) for 
 
 ## Quickstart: Interactive Demo
 
-The quickest way to test the module without any setup:
+The quickest way to test the module via [Glitch.com](https://glitch.com):
 
 [<img src="https://cdn.cobi.bike/static/devkit-assets/github/open_demo_button.png" width="170px" alt="Open demo button">](https://glitch.com/edit/#!/import/github/cobi-bike/Module-Grid)
+
+Glitch.com allows you to edit, host and fork Node.js applications for quick prototyping.
+
+## Overview
+This module listens to various speed and navigation events and displays it to the user. The user can zoom in and out with his thumb controller. In Edit-Mode, he may reorder the tiles to his needs.
+
 
 ## Installation and Setup
 
