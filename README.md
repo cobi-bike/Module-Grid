@@ -1,7 +1,7 @@
 # Grid DevKit Module for COBI.bike
 
-The Grid DevKit Module displays cycling and trip statistics and allows to customize their appearance.
-Its part of a collection of Open Source [modules](https://cobi.bike/devkit) for the [COBI.bike](https://cobi.bike) system.
+The Grid DevKit Module displays cycling and trip statistics and allows you to customize their appearance.
+It's part of a collection of Open Source [modules](https://cobi.bike/devkit) for the [COBI.bike](https://cobi.bike) system.
 
 <img src="screenshot.png" width="500px" alt="COBI.bike Grid module">
 
@@ -14,7 +14,7 @@ The quickest way to test the module via [Glitch.com](https://glitch.com):
 Glitch.com allows you to edit, host and fork Node.js applications for quick prototyping.
 
 ## Overview
-This module listens to various speed and navigation events and displays it to the user. The user can zoom in and out with his thumb controller. In Edit-Mode, he may reorder the tiles to his needs.
+This module listens to various speed and navigation events and displays it to the user. The user can zoom in and out with his thumb controller. In edit mode, he may reorder the tiles to his needs.
 
 
 ## Installation and Setup
