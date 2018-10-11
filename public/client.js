@@ -6,7 +6,7 @@ COBI.app.clockVisible.write(false);
 COBI.devkit.overrideThumbControllerMapping.write(true);
 
 // Disable Reordering in Experience
-var inEditMode = (COBI.parameters.state() == COBI.state.edit);
+var inEditMode = (COBI.parameters.context() == COBI.context.offRideSettings || COBI.parameters.context() == COBI.context.onRideSettings);
 
 // Allow user to zoom in and out
 COBI.hub.externalInterfaceAction.subscribe(function(action) {
