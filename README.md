@@ -1,4 +1,6 @@
 # Grid DevKit Module for COBI.bike
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcobi-bike%2FModule-Grid.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcobi-bike%2FModule-Grid?ref=badge_shield)
+
 
 The DevKit Module "Grid" displays cycling and trip statistics and allows you to customize their appearance.
 It's part of a collection of Open Source [modules](https://cobi.bike/devkit) for the [COBI.bike](https://cobi.bike) system.
@@ -61,3 +63,7 @@ Anyone and everyone is welcome to contribute to this project, the [DevKit Simula
 * [Pull requests](https://github.com/cobi-bike/DevKit/blob/master/CONTRIBUTING.md#pull-requests)
 
 Copyright © 2018 COBI.bike GmbH
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcobi-bike%2FModule-Grid.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcobi-bike%2FModule-Grid?ref=badge_large)
