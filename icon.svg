@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="97px" height="107px" viewBox="0 0 97 107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>app-live-grid-wheel</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M52.828273,1.18725 L92.052113,23.45377 C94.902543,25.0719 96.663693,28.0968 96.663693,31.37449 L96.663693,75.6427 C96.663693,78.92039 94.902543,81.9453 92.052113,83.56343 L52.828273,105.829947 C50.039653,107.412983 46.624043,107.412983 43.835423,105.829947 L4.611579,83.56343 C1.761153,81.9453 0,78.92039 0,75.6427 L0,31.37449 C0,28.0968 1.761153,25.0719 4.611579,23.45377 L43.835423,1.18725 C46.624043,-0.39575 50.039653,-0.39575 52.828273,1.18725 Z" id="path-1"></path>
+    </defs>
+    <g id="Manage-modules" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="app-live-grid-wheel">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FF4869" xlink:href="#path-1"></use>
+            <g mask="url(#mask-2)">
+                <g transform="translate(-7.000000, -2.000000)">
+                    <rect id="Rectangle-11" fill="#FF4869" x="0" y="0" width="110" height="110"></rect>
+                    <path d="M32.8578811,34.1653747 L51.1426748,34.1653747 C53.309001,34.1653747 55.0651554,35.9215291 55.0651554,38.0878553 L55.0651554,56.3726489 C55.0651554,58.5389752 53.309001,60.2951296 51.1426748,60.2951296 L32.8578811,60.2951296 C30.6915549,60.2951296 28.9354005,58.5389752 28.9354005,56.3726489 L28.9354005,38.0878553 C28.9354005,35.9215291 30.6915549,34.1653747 32.8578811,34.1653747 Z" id="Rectangle-8-Copy-4" fill="#FFFFFF"></path>
+                    <rect id="Rectangle-8-Copy-5" fill="#FFFFFF" x="60.3152455" y="34.1653747" width="18.3049096" height="18.3049096" rx="3.92248062"></rect>
+                    <rect id="Rectangle-8-Copy-6" fill="#FFFFFF" x="60.3152455" y="57.7002584" width="18.3049096" height="18.3049096" rx="3.92248062"></rect>
+                    <rect id="Rectangle-8-Copy-7" fill="#FFFFFF" x="28.9354005" y="65.5452196" width="10.2708436" height="10.2708436" rx="2.61498708"></rect>
+                    <rect id="Rectangle-8-Copy-8" fill="#FFFFFF" x="44.625323" y="65.5452196" width="10.2708436" height="10.2708436" rx="2.61498708"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

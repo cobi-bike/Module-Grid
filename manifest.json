@@ -1,0 +1,11 @@
+{
+    "name": "Grid",
+    "version": "1.0.0",
+    "description": "View, reorder and resize your favourite trip data in the Grid dashboard",
+    "clientId": "",
+    "oemId": null,
+    "contexts": ["offRide", "onRide"],
+    "privacyPolicy": null,
+    "appleId": null,
+    "production": true
+}
